@@ -1,7 +1,4 @@
-/**/
-/**/
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
-/**/
+/*fuentes de texto*/
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
@@ -59,11 +56,12 @@ body {
     text-align: right;
     max-width: 70%;
     font-size: 40px;
-    font-family: "Roboto", cursive;
+    font-family: "Fredoka", sans-serif;
+    font-style: italic;
     color: #01f2ea;
     text-shadow: 0px 0px 2.5px #009f9a;
     margin-right: 6px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .power-img {
@@ -73,7 +71,7 @@ body {
 
 .menu-bt-opciones {
     position: absolute;
-    top: 50%;
+    top: 55%;
     right: 0%;
     width: 100%;
     display: flex;
@@ -84,6 +82,7 @@ body {
 .div-menu-bt {
     width: 45%;
     max-width: 600px;
+    min-width: 250px;
     height: 65px;
     border-radius: 10px;
     overflow: hidden;

@@ -6,9 +6,9 @@ globalThis.addEventListener('load', () => {
 
 /*menus */
 function menu_inicio() {
-    document.body.innerHTML = `<img draggable="false"src='img/fondo.avif'class='fondo'><div style="position:absolute;display:flex;justify-content:center;top: 12%;right: 0%;width:100%;max-height:35%;"><img draggable="false" src='img/text.avif'class='title'></div><div class='power-div'><h3 class='marca-power'>0</h3><img draggable="false" src='img/power.avif'class='power-img'></div>
+    document.body.innerHTML = `<img draggable="false"src='img/fondo.avif'class='fondo'><div style="position:absolute;display:flex;justify-content:center;top: 13%;right: 0%;width:100%;max-height:35%;"><img draggable="false" src='img/text.avif'class='title'></div><div class='power-div'><h3 class='marca-power'>0</h3><img draggable="false" src='img/power.avif'class='power-img'></div>
     <div class="menu-bt-opciones">
-    <div class='div-menu-bt'><input type='button'class='bt-menu'value='Jugar'id="jugar"></div><div class='div-menu-bt'><input type='button'class='bt-menu'value='Bonificadores'id="bonificadores"></div><div class='div-menu-bt'><input type='button'class='bt-menu'value='¿Qué es esto?'id="informacion"></div>
+    <div class='div-menu-bt'><input type='button'class='bt-menu'value='Jugar'id="jugar"></div><div class='div-menu-bt'><input type='button'class='bt-menu'value='¿Qué es esto?'id="informacion"></div>
     </div>`;
     document.querySelector('#jugar').addEventListener('click', () => {
         menu_juego()
@@ -102,6 +102,10 @@ function iniciar_partida(dificultadPartida) {
     //mostrar las fichas y filas y actualizar datos
     //const puntuan_casillas_partida=calcular_puntos_casillas(datosPartida);
     actualizar_datos_casillas_partida(datosPartida);
+
+    document.querySelector('.img-volver').addEventListener('click',()=>{
+        finPartida(-1)
+    })
 }
 function generar_datos_partida(dificultad) {
     let ficha_casillas_partida,
@@ -332,5 +336,8 @@ function calcular_puntos_casillas(datosCasillas) {
 function finPartida(puntos_conseguidos = 0, bonus = 0, puntos_minimos = 0) {
     if (puntos_conseguidos >= puntos_minimos) {//partida terminada
         console.log('fin partida')
+    }
+    else if(puntos_conseguidos==-1){//cerrar partida sin terminar
+
     }
 }
