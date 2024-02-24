@@ -243,7 +243,7 @@ body {
     position: relative;
     width: 55px;
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
 }
 
 #seccion-fichas-bonus-usuario {
@@ -314,12 +314,13 @@ body {
     height: 38px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     border: solid 3px #be3dc5;
     border-radius: 0.1cqb;
 }
 
 #barra-progreso {
+    margin-left: 4px;
     width: 442px;
     height: 30px;
     background: linear-gradient(to right, #fb4003 13%, #fc5602 25%, #ff6905 38%, #f86f00 50%, #ff9600 62.5%);

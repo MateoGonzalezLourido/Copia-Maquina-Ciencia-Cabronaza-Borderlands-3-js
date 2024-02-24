@@ -183,8 +183,15 @@ function actualizar_datos_casillas_partida(datosPartida) {
     }
     document.querySelector("#div-casillas-partida").innerHTML = codigo_html;
     //barra progreso 
-    const rellenoBarraProgreso = (puntos_conseguidos[0] >= datosPartida.total_puntos_minimos_terminar) ? 100 : ((100 * puntos_conseguidos[0]) / datosPartida.total_puntos_minimos_terminar)
-    document.querySelector("#barra-progreso").style.background = `linear-gradient(to right, #fb4003 ${(rellenoBarraProgreso >= 13) ? 13 : rellenoBarraProgreso}%, #fc5602 ${(rellenoBarraProgreso >= 25) ? 25 : rellenoBarraProgreso}%, #ff6905 ${(rellenoBarraProgreso >= 38) ? 38 : rellenoBarraProgreso}%, #f86f00 ${(rellenoBarraProgreso >= 50) ? 50 : rellenoBarraProgreso}%, #ff9600 ${(rellenoBarraProgreso >= 62.5) ? 62.5 : rellenoBarraProgreso}%)`;
+    const rellenoBarraProgreso = (((442 * puntos_conseguidos[0]) / datosPartida.total_puntos_minimos_terminar)) > 442 ? 442 : ((442 * puntos_conseguidos[0]) / datosPartida.total_puntos_minimos_terminar)
+    try {
+        $("#barra-progreso").animate({
+            width: `${rellenoBarraProgreso}px`
+        }, 250);
+    }
+    catch {
+        document.querySelector("#barra-progreso").style.width = `${rellenoBarraProgreso}px`
+    }
     //puntos
     document.querySelector(".puntuacion-usuario").innerHTML = `<span>YOUR SCORE<br><font>${puntos_conseguidos[0]}</font></span>`;
     //bonus
@@ -323,7 +330,7 @@ function finPartida(puntos_conseguidos = 0, bonus = 0, puntos_minimos = 0) {
         menu_inicio()
     }
 }
-function actualizarMonedas(monedasAñadir=0) {
+function actualizarMonedas(monedasAñadir = 0) {
     const rutaGuardado = 'MonedasGuardadas'
     const monedasActuales = (Number(localStorage.getItem(rutaGuardado)) >= 0) ? Number(localStorage.getItem(rutaGuardado)) : 0;
     localStorage.setItem(rutaGuardado, (monedasAñadir + monedasActuales))
