@@ -8,7 +8,7 @@ globalThis.addEventListener('load', () => {
 function menu_inicio() {
     document.body.innerHTML = `<img draggable="false"src='img/fondo.avif'class='fondo'><div style="position:absolute;display:flex;justify-content:center;top: 13%;right: 0%;width:100%;max-height:35%;"><img draggable="false" src='img/text.avif'class='title'></div><div class='power-div'><h3 class='marca-power'>0</h3><img draggable="false" src='img/power.avif'class='power-img'></div>
     <div class="menu-bt-opciones">
-    <div class='div-menu-bt'><input type='button'class='bt-menu'value='PLAY'id="jugar"></div><div class='div-menu-bt'><input type='button'class='bt-menu'value="WHAT'S THIS"id="informacion"></div>
+    <div class='div-menu-bt'><input type='button'class='bt-menu'value='PLAY'id="jugar"></div>
     </div>
     <div style="position:absolute;display:flex;justify-content:center;bottom: 5%;right: 0%;width:100%;">
     <div class="lo-sabias">
