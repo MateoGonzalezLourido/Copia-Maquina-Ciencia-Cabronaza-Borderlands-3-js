@@ -8,37 +8,18 @@ globalThis.addEventListener('load', () => {
 function menu_inicio() {
     document.body.innerHTML = `<img draggable="false"src='img/fondo.avif'class='fondo'><div style="position:absolute;display:flex;justify-content:center;top: 13%;right: 0%;width:100%;max-height:35%;"><img draggable="false" src='img/text.avif'class='title'></div><div class='power-div'><h3 class='marca-power'>0</h3><img draggable="false" src='img/power.avif'class='power-img'></div>
     <div class="menu-bt-opciones">
-    <div class='div-menu-bt'><input type='button'class='bt-menu'value='Jugar'id="jugar"></div><div class='div-menu-bt'><input type='button'class='bt-menu'value='¿Qué es esto?'id="informacion"></div>
+    <div class='div-menu-bt'><input type='button'class='bt-menu'value='PLAY'id="jugar"></div><div class='div-menu-bt'><input type='button'class='bt-menu'value="WHAT'S THIS"id="informacion"></div>
+    </div>
+    <div style="position:absolute;display:flex;justify-content:center;bottom: 5%;right: 0%;width:100%;">
+    <div class="lo-sabias">
+    <font>¿Lo sabías?</font><br>
+    <span>Los bloques de ADN se llaman nucleótidos, y hay cuatro variedades diferentes, cada una representada por placas de cuatro colores distintos.</span>
     </div>`;
     document.querySelector('#jugar').addEventListener('click', () => {
-        menu_juego()
-    })
-    document.querySelector('#bonificadores').addEventListener('click', () => {
-        menu_bonus()
-    })
-    document.querySelector('#informacion').addEventListener('click', () => {
-        menu_informacion()
+        iniciar_partida(1)
     })
 }
-function menu_juego() {
-    document.body.innerHTML = `<img draggable="false"src='img/fondo.avif'class='fondo'><img draggable="false" src='img/volver.avif'class='img-volver'><div class='power-div'><h3 class='marca-power'>0</h3><img draggable="false" src='img/power.avif'class='power-img'></div>
-    <div class='div-personajes'><div class='div-personaje-partida'><div class='personaje-partida' onclick='iniciar_partida(1)'></div></div><div  class='div-personaje-partida'><div class='personaje-partida'></div></div></div>`;
-    document.querySelector('.img-volver').addEventListener('click', () => {
-        menu_inicio()
-    })
-}
-function menu_bonus() {
-    document.body.innerHTML = `<img draggable="false"src='img/fondo.avif'class='fondo'><img draggable="false" src='img/volver.avif'class='img-volver'><div class='power-div'><h3 class='marca-power'>0</h3><img draggable="false" src='img/power.avif'class='power-img'></div>`;
-    document.querySelector('.img-volver').addEventListener('click', () => {
-        menu_inicio()
-    })
-}
-function menu_informacion() {
-    document.body.innerHTML = `<img draggable="false"src='img/fondo.avif'class='fondo'><img draggable="false" src='img/volver.avif'class='img-volver'>`;
-    document.querySelector('.img-volver').addEventListener('click', () => {
-        menu_inicio()
-    })
-}
+
 /*juego */
 let fichas_comodin_usuario = 0;
 let casillas_partida = []
@@ -103,7 +84,7 @@ function iniciar_partida(dificultadPartida) {
     //const puntuan_casillas_partida=calcular_puntos_casillas(datosPartida);
     actualizar_datos_casillas_partida(datosPartida);
 
-    document.querySelector('.img-volver').addEventListener('click',()=>{
+    document.querySelector('.img-volver').addEventListener('click', () => {
         finPartida(-1)
     })
 }
@@ -222,7 +203,7 @@ function actualizar_datos_casillas_partida(datosPartida) {
     //boton finalizar partida activar
     if (puntos_conseguidos[0] >= datosPartida.total_puntos_minimos_terminar) {
         document.querySelector(".div-bt-terminar").style.display = "flex"
-        document.querySelector('#bt-terminar-partida').disabled="false"
+        document.querySelector('#bt-terminar-partida').disabled = "false"
         document.querySelector('#bt-terminar-partida').addEventListener('click', () => {
             if (puntos_conseguidos[0] >= datosPartida.total_puntos_minimos_terminar) {//valido
                 finPartida(puntos_conseguidos[0], bonus_conseguido, datosPartida.total_puntos_minimos_terminar)
@@ -230,7 +211,7 @@ function actualizar_datos_casillas_partida(datosPartida) {
         })
     }
     else {
-        document.querySelector('#bt-terminar-partida').disabled="true"
+        document.querySelector('#bt-terminar-partida').disabled = "true"
         document.querySelector(".div-bt-terminar").style.display = "none"
     }
     document.querySelectorAll('.casilla').forEach((item) => {
@@ -335,9 +316,21 @@ function calcular_puntos_casillas(datosCasillas) {
 }
 function finPartida(puntos_conseguidos = 0, bonus = 0, puntos_minimos = 0) {
     if (puntos_conseguidos >= puntos_minimos) {//partida terminada
-        console.log('fin partida')
+        const monedasAñadir = (15) + (bonus * 4)
+        actualizarMonedas(monedasAñadir)
     }
-    else if(puntos_conseguidos==-1){//cerrar partida sin terminar
-
+    else if (puntos_conseguidos == -1) {//cerrar partida sin terminar
+        menu_inicio()
     }
+}
+function actualizarMonedas(monedasAñadir=0) {
+    const rutaGuardado = 'MonedasGuardadas'
+    const monedasActuales = (Number(localStorage.getItem(rutaGuardado)) >= 0) ? Number(localStorage.getItem(rutaGuardado)) : 0;
+    localStorage.setItem(rutaGuardado, (monedasAñadir + monedasActuales))
+    menu_inicio()
+    try {
+        document.querySelector('.marca-power').innerHTML = monedasAñadir + monedasActuales
+    }
+    catch { }
+    return (monedasAñadir + monedasActuales)
 }

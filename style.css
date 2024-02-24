@@ -363,3 +363,33 @@ body {
 .div-bt-terminar #bt-terminar-partida:disabled {
     cursor: not-allowed;
 }
+
+.lo-sabias {
+    position: absolute;
+    bottom: 5%;
+    width: 60%;
+    height: 80px;
+    border-radius: 6px;
+    padding: 12px;
+    background-color:#00002a ;
+    font-family: "Poppins", sans-serif;
+    display: grid;
+    max-width: 600px;
+}
+
+.lo-sabias font {
+    margin-bottom: 4px;
+    line-height: 20px;
+    font-size: 16px;
+    color: #f655f6;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+}
+
+.lo-sabias span {
+    color: #00eff2;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1.25px;
+    line-height: 19px;
+}
