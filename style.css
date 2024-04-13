@@ -19,7 +19,6 @@ body {
     right: 0px;
     height: 100%;
     width: 100%;
-    background-repeat: no-repeat;
 }
 
 .fondo {
@@ -296,7 +295,6 @@ body {
     height: 40px;
     float: left;
     background-size: 100% 100%;
-    background-repeat: no-repeat;
 }
 
 .div-abajo {
